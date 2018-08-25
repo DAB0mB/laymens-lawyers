@@ -28,7 +28,7 @@ class ThankYouView extends React.Component {
 
   render() {
     const proxies = Controller !== ThankYouView ? transformProxies(this.props.children) : {
-
+      'message': {},
     }
 
     return (
@@ -43,7 +43,7 @@ class ThankYouView extends React.Component {
         </div>
         <div id="contact" className="__af-section-3 __af-thanks">
           <div className="__af-container-2 __af-thank-you __af-w-container">
-            <h1 className="__af-heading-3 __af-ty">Thank You!</h1>
+            {proxies['message'] && <h1 className="__af-heading-3 __af-ty" {...proxies['message']}>{proxies['message'].children ? proxies['message'].children : <React.Fragment>Thank You!</React.Fragment>}</h1>}
             <p className="__af-paragraph-3">We have received your enquiry. Someone from our team will get back to you as soon as possible.</p>
           </div>
         </div>

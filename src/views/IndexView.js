@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 const React = require('react')
+const ContactFormView = require('./ContactFormView')
 const { transformProxies } = require('./utils')
 
 let Controller
@@ -28,7 +29,7 @@ class IndexView extends React.Component {
 
   render() {
     const proxies = Controller !== IndexView ? transformProxies(this.props.children) : {
-
+      'contact-form': {},
     }
 
     return (
@@ -44,18 +45,7 @@ class IndexView extends React.Component {
         <div id="contact" className="__af-section-3">
           <div className="__af-container-2 __af-w-container">
             <h1 className="__af-heading-3">Registered Immigration Agent in Sydney, Australia</h1>
-            <div className="__af-div-block">
-              <h3 className="__af-heading-7">Looking for a <strong>FREE</strong> <br />phone consultation?</h3>
-              <div className="__af-w-form">
-                <form id="email-form" name="email-form" data-name="Email Form" data-redirect="/thank-you" redirect="/thank-you"><label htmlFor="name" className="__af-field-label">Name:</label><input type="text" className="__af-w-input" maxLength={256} name="name" data-name="Name" placeholder="Enter your name" id="name" /><label htmlFor="Phone" className="__af-field-label-2">Email Address:</label><input type="text" className="__af-w-input" maxLength={256} name="Phone" data-name="Phone" placeholder="Phone Number" id="Phone" required /><input type="text" className="__af-w-input" maxLength={256} name="email" data-name="Email" placeholder="Enter your email" id="email" required /><textarea id="Message" name="Message" placeholder="How can we help?" maxLength={5000} data-name="Message" className="__af-textarea __af-w-input" defaultValue={""} /><input type="submit" defaultValue="Submit" data-wait="Please wait..." className="__af-button __af-w-button" /></form>
-                <div className="__af-w-form-done">
-                  <div>Thank you! Your submission has been received!</div>
-                </div>
-                <div className="__af-w-form-fail">
-                  <div>Oops! Something went wrong while submitting the form.</div>
-                </div>
-              </div>
-            </div>
+            {proxies['contact-form'] && <ContactFormView.Controller {...proxies['contact-form']}>{proxies['contact-form'].children}</ContactFormView.Controller>}
           </div>
         </div>
         <div className="__af-section-5">

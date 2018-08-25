@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import './styles'
+import './scripts'
+import IndexView from './views/IndexView'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<IndexView />, document.getElementById('root'));
 registerServiceWorker();
